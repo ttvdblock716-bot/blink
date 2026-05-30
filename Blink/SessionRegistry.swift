@@ -49,7 +49,7 @@ protocol SuspendableSession: class {
   private var _sessionsIndex: [UUID: SuspendableSession] = [:]
   private var _metaIndex: [UUID: SessionMeta] = [:]
   
-  @objc public static let shared = SessionRegistry()
+  @objc public static nonisolated(unsafe) let shared = SessionRegistry()
   
   override init() {
     super.init()

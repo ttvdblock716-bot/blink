@@ -50,11 +50,11 @@ public struct Entitlement: Identifiable, Equatable, Hashable {
   public var unlockProductID: String?
   public var period: EntitlementPeriodType
 
-  public static var inactiveUnlimitedScreenTime = Self(id: UnlimitedScreenTimeEntitlementID, active: false, unlockProductID: nil, period: .None)
+  public static nonisolated(unsafe) var inactiveUnlimitedScreenTime = Self(id: UnlimitedScreenTimeEntitlementID, active: false, unlockProductID: nil, period: .None)
 
-  public static var earlyAccessFeatures = Self(id: EarlyAccessFeaturesEntitlementID, active: false, unlockProductID: nil, period: .None)
+  public static nonisolated(unsafe) var earlyAccessFeatures = Self(id: EarlyAccessFeaturesEntitlementID, active: false, unlockProductID: nil, period: .None)
 
-  public static var build = Self(id: BuildEntitlementID, active: false, unlockProductID: nil, period: .None)
+  public static nonisolated(unsafe) var build = Self(id: BuildEntitlementID, active: false, unlockProductID: nil, period: .None)
 }
 
 public protocol EntitlementsSourceDelegate: AnyObject {
@@ -73,7 +73,7 @@ public protocol EntitlementsSource: AnyObject {
 
 public class EntitlementsManager: ObservableObject, EntitlementsSourceDelegate {
   
-  public static let shared = EntitlementsManager([AppStoreEntitlementsSource()])
+  public static nonisolated(unsafe) let shared = EntitlementsManager([AppStoreEntitlementsSource()])
   
   @Published var unlimitedTimeAccess: Entitlement = .inactiveUnlimitedScreenTime
   @Published var earlyAccessFeatures: Entitlement = .earlyAccessFeatures

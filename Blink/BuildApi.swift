@@ -33,6 +33,8 @@
 import Foundation
 import RevenueCat
 
+extension TokioSignals: @unchecked Sendable {}
+
 
 struct BuildAccountInfo: Decodable {
   let build_id: String

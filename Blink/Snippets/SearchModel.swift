@@ -472,7 +472,7 @@ extension SearchModel {
 }
 
 // MARK: Snippet Selection
-var generated: Bool = false
+nonisolated(unsafe) var generated: Bool = false
 
 extension SearchModel {
   var currentSelection: Snippet? {

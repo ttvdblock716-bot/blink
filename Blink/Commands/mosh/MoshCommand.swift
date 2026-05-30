@@ -61,14 +61,14 @@ struct MoshCommand: ParsableCommand {
     transform: { try BKMoshPrediction(parsing: $0) })
   var predict: BKMoshPrediction?
 
-  @Flag (
+  @Flag(
     name: [.customShort("o")]
   )
   var predictOverwrite: Bool = false
 
   @Flag var verbose: Bool = false
 
-  @Flag (
+  @Flag(
     name: [.customShort("T")],
     help: "Do not start a TTY"
   )
